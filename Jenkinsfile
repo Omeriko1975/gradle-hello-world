@@ -20,3 +20,5 @@ node('slave') {
            addBadge(icon: 'green.gif', text: 'build success')
         
 }
+}
+      
