@@ -10,8 +10,7 @@ node('slave') {
 
    // Mark the code build 'stage'....
    stage ('gradle build'){
-      { 
-      sh $"{gradle4/bin/gradle build"
+            sh $"{gradle4/bin/gradle build"
       }
    } catch (ex) {
       echo 'Error occured'
