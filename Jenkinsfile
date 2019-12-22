@@ -2,7 +2,7 @@
 node('slave') {
    // Mark the code checkout 'stage'....
    stage ('Checkout'){
-
+ gradle4=tool 'gradle4'
       // Get some code from a GitHub repository
       checkout scm
       
@@ -10,12 +10,13 @@ node('slave') {
 
    // Mark the code build 'stage'....
    stage ('gradle build'){
-      // Get the gradle tool.
-      // ** NOTE: This 'maven3' maven tool must be configured
-      // **       in the global configuration.
-     def gradleHome = tool 'gradle4'
-
-   post  {
-   addBadge icon: 'info', id: '', link: '', text: ''
-   }
+      { 
+      sh $"{gradle4/bin/gradle build"
+      }
+   } catch (ex) {
+      echo 'Error occured'
+     stage ('post') {
+     if ( CurrentBuild.result == 'SUCCESS')
+           addBadge(icon: 'green.gif', text: 'build success')
+        
 }
