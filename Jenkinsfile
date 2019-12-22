@@ -12,7 +12,7 @@ node('slave') {
    stage ('gradle build'){
             sh $"{gradle4/bin/gradle build"
       }
-   } catch (ex) {
+    catch (ex) {
       echo 'Error occured'
      stage ('post') {
      if ( CurrentBuild.result == 'SUCCESS')
